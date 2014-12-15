@@ -1,0 +1,12 @@
+package it.jboss.bpmdemo;
+
+import java.lang.Number;
+
+rule "ResetValidation"
+	dialect "mvel"
+	ruleflow-group "resetvalidation"
+	when
+		err : RequestError( )
+	then
+		retract( err );
+end

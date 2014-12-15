@@ -1,0 +1,15 @@
+package it.jboss.bpmdemo;
+
+import java.lang.Number;
+
+rule "Validate Quantity"
+	dialect "mvel"
+	ruleflow-group "validation"
+	when
+		Request( quantity > 30 )
+	then
+		RequestError fact0 = new RequestError();
+		fact0.setMessage( "Too many items for a single request." );
+		insert( fact0 );
+		System.out.println("[RULE: Validate Quantity] fired rule.");
+end
