@@ -15,8 +15,7 @@
 
     <modules>
         <module>basic</module>
-        <!--module>basicdep</module-->
-        <!--module>bpms</module-->
+        <module>process</module>
     </modules>
 
     <dependencyManagement>
