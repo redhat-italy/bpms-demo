@@ -5,15 +5,20 @@ import org.kie.api.KieServices;
 import org.kie.api.builder.ReleaseId;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Main {
+
+    Logger logger = LoggerFactory.getLogger("it.redhat.bpms.labs");
 
 	public static void main(String[] args) {
 		new Main().execute();
 	}
 
     private void execute() {
-        System.out.println("====> starting Lab 1 ...");
+        logger.info("============================================================");
+        logger.info("==== starting Lab 1 ========================================");
         KieServices kieServices = KieServices.Factory.get();
 
         /*
@@ -23,18 +28,19 @@ public class Main {
          */
 
         ReleaseId id = kieServices.newReleaseId("it.redhat.bpms.labs", "basic", "1.0.0-SNAPSHOT");
-        //ReleaseId id = kieServices.newReleaseId("org.jboss.ddoyle.brms.workshop", "Brms6WorkshopKieScannerRules", "1.0.0-SNAPSHOT");
 
-        System.out.println("====> Pulling definitions from Maven repo.");
+        logger.info("====> Pulling definitions from Maven repo.");
         KieContainer kieContainer = kieServices.newKieContainer(id);
-        System.out.println("====> Creating KIE Session.");
+        logger.info("====> Creating KIE Session.");
         KieSession ksession = kieContainer.newKieSession();
 
-        System.out.println("====> inserting facts...");
+        logger.info("====> inserting facts...");
         ksession.insert(new Person("Mario"));
         ksession.fireAllRules();
         ksession.dispose();
 
+        logger.info("==== END of Lab 1 ==========================================");
+        logger.info("============================================================");
     }
 
 }

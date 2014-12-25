@@ -12,6 +12,14 @@
     <version>1.0.0-SNAPSHOT</version>
 
     <dependencies>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+        </dependency>
         <!-- JBoss BRMS/Drools dependencies. -->
         <dependency>
             <groupId>org.kie</groupId>
