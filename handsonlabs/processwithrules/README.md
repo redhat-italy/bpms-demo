@@ -4,15 +4,10 @@ A series of labs to be used for self learning of the platform.
 
 ---------
 
-## Lab 2 PROCESS
+## Lab 3 PROCESS WITH RULES
 
-The second lab is very similar to Lab 1 with the difference of a simple Business Process.
-Looking at the Main class you will find a new statement added to start the process
-
-        'kieSession.startProcess("process");'
-
-The process definition is contained in the file *process.bpmn2* under the *resources* directory (where also the rules file is).
-The process definition is very very simple, it just have a Start event, a Script Task (that just logs a text message on console) and an END event.
+The third lab is the same of Lab 2, There is a Process, a Rule and a Model, the only difference is that the application executes a process
+which executes a rule.
 
 ![process.png](process.png)
 
