@@ -1,0 +1,17 @@
+package it.redhat.bpms.labs;
+
+//list any import classes here.
+import it.redhat.bpms.labs.model.Person;
+import it.redhat.bpms.labs.model.RuleError
+
+rule "Basic Rule"
+	dialect "mvel"
+	ruleflow-group "processrules"
+
+	when
+		$p: Person( age < 30 )
+	then 
+		System.out.println("\n          [BASIC RULE] " + $p.getName() + " is too young!\n");
+		RuleError fact0 = new RuleError($p.getName() + " is too Young");
+		insert(fact0);
+end

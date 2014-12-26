@@ -7,7 +7,7 @@ Basics
 ---------
 
 - Lab 1 **basic** Simply build and and fire a rule.
-- Lab 2 **basicdep** Same as Lab 1 using a dependency for DataModel.
-- Lab 3 **bpms** Build and run a process with external rules and data model.
+- Lab 2 **process** Same as Lab 1 with the addition of a Business Process.
+- Lab 3 **processwithrules** same as Lab 1 and 2 with a process that uses Rules and Facts.
 
 
