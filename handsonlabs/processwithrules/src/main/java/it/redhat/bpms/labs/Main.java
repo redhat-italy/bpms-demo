@@ -1,6 +1,5 @@
 package it.redhat.bpms.labs;
 
-import it.redhat.bpms.labs.model.Person;
 import org.kie.api.KieServices;
 import org.kie.api.builder.ReleaseId;
 import org.kie.api.runtime.KieContainer;
@@ -18,7 +17,7 @@ public class Main {
 
     private void execute() {
         logger.info("============================================================");
-        logger.info("==== starting Lab 2 ========================================");
+        logger.info("==== starting Lab 3 ========================================");
         KieServices kieServices = KieServices.Factory.get();
 
         /*
@@ -27,23 +26,19 @@ public class Main {
              This allows creation of a new KIE Container from project simply passing it to the KIE Services.
          */
 
-        ReleaseId id = kieServices.newReleaseId("it.redhat.bpms.labs", "process", "1.0.0-SNAPSHOT");
+        ReleaseId id = kieServices.newReleaseId("it.redhat.bpms.labs", "processwithrules", "1.0.0-SNAPSHOT");
 
         logger.info("====> Pulling definitions from Maven repo.");
         KieContainer kieContainer = kieServices.newKieContainer(id);
         logger.info("====> Creating KIE Session.");
         KieSession kieSession = kieContainer.newKieSession("ksession");
 
-        logger.info("====> inserting facts...");
-        kieSession.insert(new Person("Mario"));
-        kieSession.fireAllRules();
-
-        logger.info("====> Starting simple process...");
-        kieSession.startProcess("process");
+        logger.info("====> Starting process...");
+        kieSession.startProcess("processwithrules");
 
         kieSession.dispose();
 
-        logger.info("==== END of Lab 2 ==========================================");
+        logger.info("==== END of Lab 3 ==========================================");
         logger.info("============================================================");
     }
 

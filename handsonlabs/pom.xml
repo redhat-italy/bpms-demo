@@ -17,6 +17,7 @@
         <module>basic</module>
         <module>process</module>
         <module>processwithrules</module>
+        <module>datamodel</module>
     </modules>
 
     <dependencyManagement>

@@ -4,7 +4,7 @@ A series of labs to be used for self learning of the platform.
 
 ---------
 
-## BASIC
+## LAB 1 BASIC
 
 This lab is the very first learning step, it's a tipical "Hello World" application, it's a rule and a Main that executes the rule.
 The lab uses an object of type *Person*, if you look at the Main source code you can see that it is based on KieServices

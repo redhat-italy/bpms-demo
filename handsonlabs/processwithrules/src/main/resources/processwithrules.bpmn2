@@ -10,7 +10,7 @@
     <bpmn2:scriptTask id="ScriptTask_1" name="Create Facts" scriptFormat="http://www.java.com/java">
       <bpmn2:incoming>SequenceFlow_1</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_2</bpmn2:outgoing>
-      <bpmn2:script>Person p = new Person(&quot;Mario&quot;);
+      <bpmn2:script>it.redhat.bpms.labs.model.Person p = new it.redhat.bpms.labs.model.Person(&quot;Mario&quot;);
 System.out.println(&quot;============ Added new Person &quot;  + p.getName() + &quot; === of age: &quot; + p.getAge() );
 kcontext.setVariable(&quot;person&quot;, p);</bpmn2:script>
     </bpmn2:scriptTask>
@@ -32,7 +32,9 @@ kcontext.setVariable(&quot;person&quot;, p);</bpmn2:script>
       <bpmn2:script>System.out.println(&quot;============ REQUEST ACCEPTED! ====================================&quot;);
 </bpmn2:script>
     </bpmn2:scriptTask>
-    <bpmn2:sequenceFlow id="SequenceFlow_4" tns:priority="1" sourceRef="ExclusiveGateway_1" targetRef="ScriptTask_2"/>
+    <bpmn2:sequenceFlow id="SequenceFlow_4" tns:priority="1" sourceRef="ExclusiveGateway_1" targetRef="ScriptTask_2">
+      <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression" id="FormalExpression_18" language="http://www.jboss.org/drools/rule">not it.redhat.bpms.labs.model.RuleError()</bpmn2:conditionExpression>
+    </bpmn2:sequenceFlow>
     <bpmn2:endEvent id="EndEvent_1" name="">
       <bpmn2:incoming>SequenceFlow_5</bpmn2:incoming>
     </bpmn2:endEvent>
@@ -43,11 +45,11 @@ kcontext.setVariable(&quot;person&quot;, p);</bpmn2:script>
     <bpmn2:scriptTask id="ScriptTask_3" name="Rejected">
       <bpmn2:incoming>SequenceFlow_8</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_9</bpmn2:outgoing>
-      <bpmn2:script>Person person = (Person) kcontext.getVariable(&quot;person&quot;);
-System.out.println(&quot;============ TOO YOUNG, REQUEST REJECTED: &quot;  + person.getName() + &quot; is: &quot; + p.getAge() + &quot; years old.&quot;);
-</bpmn2:script>
+      <bpmn2:script>System.out.println(&quot;============ TOO YOUNG, REQUEST REJECTED! =========================&quot;);</bpmn2:script>
     </bpmn2:scriptTask>
-    <bpmn2:sequenceFlow id="SequenceFlow_8" tns:priority="1" sourceRef="ExclusiveGateway_1" targetRef="ScriptTask_3"/>
+    <bpmn2:sequenceFlow id="SequenceFlow_8" tns:priority="1" sourceRef="ExclusiveGateway_1" targetRef="ScriptTask_3">
+      <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression" id="FormalExpression_17" language="http://www.jboss.org/drools/rule">it.redhat.bpms.labs.model.RuleError()</bpmn2:conditionExpression>
+    </bpmn2:sequenceFlow>
     <bpmn2:sequenceFlow id="SequenceFlow_9" tns:priority="1" sourceRef="ScriptTask_3" targetRef="EndEvent_2"/>
   </bpmn2:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
